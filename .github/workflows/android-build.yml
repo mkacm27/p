@@ -32,8 +32,15 @@ jobs:
       - name: 5. Grant execute permission to gradlew
         run: chmod +x android/gradlew
 
-      - name: 6. Clean up duplicate resources
-        run: rm -f android/app/src/main/res/drawable-*/node_modules_*
+      - name: 6. Diagnose and clean resources
+        run: |
+          echo "--- Listing resources BEFORE cleanup ---"
+          ls -R android/app/src/main/res/
+          echo "--- Running cleanup command ---"
+          rm -f android/app/src/main/res/drawable-*/node_modules_*
+          echo "--- Listing resources AFTER cleanup ---"
+          ls -R android/app/src/main/res/
+          echo "--- Diagnosis complete ---"
 
       - name: 7. Create Android bundle
         run: |
