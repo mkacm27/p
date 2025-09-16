@@ -33,7 +33,7 @@ jobs:
         run: chmod +x android/gradlew
 
       - name: 6. Clean up duplicate resources
-        run: find android/app/src/main/res/ -name "node_modules_*" -type f -delete
+        run: rm -f android/app/src/main/res/drawable-*/node_modules_*
 
       - name: 7. Create Android bundle
         run: |
